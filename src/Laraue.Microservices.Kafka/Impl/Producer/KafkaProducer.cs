@@ -1,7 +1,7 @@
 ﻿using Confluent.Kafka;
 using Laraue.Microservices.Kafka.Abstractions.Producer;
 
-namespace Laraue.Microservices.Kafka.Impl;
+namespace Laraue.Microservices.Kafka.Impl.Producer;
 
 public sealed class KafkaProducer<TMessage> : IKafkaProducer<TMessage> 
     where TMessage : class

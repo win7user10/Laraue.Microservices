@@ -2,7 +2,7 @@
 using Laraue.Microservices.Kafka.Abstractions.Producer;
 using Laraue.Microservices.Kafka.Impl.Serializers;
 
-namespace Laraue.Microservices.Kafka.Impl;
+namespace Laraue.Microservices.Kafka.Impl.Producer;
 
 public sealed class KafkaProducerBuilder<TMessage> : IKafkaProducerBuilder<TMessage>
     where TMessage : class

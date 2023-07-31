@@ -1,7 +1,7 @@
 ﻿using Laraue.Microservices.Kafka.Abstractions.Producer;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Laraue.Microservices.Kafka.Impl;
+namespace Laraue.Microservices.Kafka.Impl.Producer;
 
 public sealed class KafkaProducerFactory : IKafkaProducerFactory
 {
