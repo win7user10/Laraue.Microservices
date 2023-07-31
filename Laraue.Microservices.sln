@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{149BFA66-9965-49E4-B80B-BD54747BA1EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4B0CE299-CC49-4203-BACE-387C67040498}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laraue.Microservices.Kafka", "src\Laraue.Microservices.Kafka\Laraue.Microservices.Kafka.csproj", "{9A270A7E-F473-4279-A260-596D4C2E0564}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laraue.Microservices.Metrics", "src\Laraue.Microservices.Metrics\Laraue.Microservices.Metrics.csproj", "{ECFB7F38-8395-4ACB-BF8E-0E5FE51A9F95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laraue.Microservices.Http", "src\Laraue.Microservices.Http\Laraue.Microservices.Http.csproj", "{D6084580-5DB9-4DCC-BC7D-D5ED002D26F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laraue.Microservices.ApiGateway", "src\Laraue.Microservices.ApiGateway\Laraue.Microservices.ApiGateway.csproj", "{55816300-2ED8-4A9E-967B-75B590C08074}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laraue.Microservices.Authentication", "src\Laraue.Microservices.Authentication\Laraue.Microservices.Authentication.csproj", "{9466C84F-5A9F-4E24-BC73-1D9B9AA91AAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laraue.Microservices.Tests.Kafka", "tests\Laraue.Microservices.Tests.Kafka\Laraue.Microservices.Tests.Kafka.csproj", "{FDC5291F-0E49-48AD-8E65-40CF83C45ADB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9A270A7E-F473-4279-A260-596D4C2E0564} = {149BFA66-9965-49E4-B80B-BD54747BA1EF}
+		{ECFB7F38-8395-4ACB-BF8E-0E5FE51A9F95} = {149BFA66-9965-49E4-B80B-BD54747BA1EF}
+		{D6084580-5DB9-4DCC-BC7D-D5ED002D26F8} = {149BFA66-9965-49E4-B80B-BD54747BA1EF}
+		{55816300-2ED8-4A9E-967B-75B590C08074} = {149BFA66-9965-49E4-B80B-BD54747BA1EF}
+		{9466C84F-5A9F-4E24-BC73-1D9B9AA91AAF} = {149BFA66-9965-49E4-B80B-BD54747BA1EF}
+		{FDC5291F-0E49-48AD-8E65-40CF83C45ADB} = {4B0CE299-CC49-4203-BACE-387C67040498}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A270A7E-F473-4279-A260-596D4C2E0564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A270A7E-F473-4279-A260-596D4C2E0564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A270A7E-F473-4279-A260-596D4C2E0564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A270A7E-F473-4279-A260-596D4C2E0564}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECFB7F38-8395-4ACB-BF8E-0E5FE51A9F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECFB7F38-8395-4ACB-BF8E-0E5FE51A9F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECFB7F38-8395-4ACB-BF8E-0E5FE51A9F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECFB7F38-8395-4ACB-BF8E-0E5FE51A9F95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6084580-5DB9-4DCC-BC7D-D5ED002D26F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6084580-5DB9-4DCC-BC7D-D5ED002D26F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6084580-5DB9-4DCC-BC7D-D5ED002D26F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6084580-5DB9-4DCC-BC7D-D5ED002D26F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55816300-2ED8-4A9E-967B-75B590C08074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55816300-2ED8-4A9E-967B-75B590C08074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55816300-2ED8-4A9E-967B-75B590C08074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55816300-2ED8-4A9E-967B-75B590C08074}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9466C84F-5A9F-4E24-BC73-1D9B9AA91AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9466C84F-5A9F-4E24-BC73-1D9B9AA91AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9466C84F-5A9F-4E24-BC73-1D9B9AA91AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9466C84F-5A9F-4E24-BC73-1D9B9AA91AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC5291F-0E49-48AD-8E65-40CF83C45ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC5291F-0E49-48AD-8E65-40CF83C45ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC5291F-0E49-48AD-8E65-40CF83C45ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC5291F-0E49-48AD-8E65-40CF83C45ADB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
