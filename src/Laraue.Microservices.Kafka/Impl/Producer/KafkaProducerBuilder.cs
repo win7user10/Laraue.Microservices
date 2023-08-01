@@ -49,7 +49,7 @@ public sealed class KafkaProducerBuilder<TMessage> : IKafkaProducerBuilder<TMess
     public IKafkaProducerBuilder<TMessage> ConfigureConfluentProducer(
         Action<ProducerBuilder<string, TMessage>> configureProducer)
     {
-        _configureConfluentProducer = configureProducer;
+        _configureConfluentProducer += configureProducer;
 
         return this;
     }

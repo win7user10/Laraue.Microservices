@@ -2,7 +2,7 @@
 
 namespace Laraue.Microservices.Kafka.Abstractions.Producer;
 
-public interface IKafkaProducer<in TMessage> : IKafkaProducer
+public interface IKafkaProducer<in TMessage> : IBroker
     where TMessage : class
 {
     Task ProduceAsync(
@@ -15,9 +15,4 @@ public interface IKafkaProducer<in TMessage> : IKafkaProducer
         string key,
         TMessage message,
         CancellationToken ct = default);
-}
-
-public interface IKafkaProducer
-{
-    string Topic { get; }
 }

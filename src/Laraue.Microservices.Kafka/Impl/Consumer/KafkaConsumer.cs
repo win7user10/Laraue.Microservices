@@ -7,9 +7,10 @@ public sealed class KafkaConsumer<TMessage> : IKafkaConsumer<TMessage> where TMe
 {
     private readonly IConsumer<string, TMessage> _consumer;
 
-    public KafkaConsumer(IConsumer<string, TMessage> consumer)
+    public KafkaConsumer(IConsumer<string, TMessage> consumer, string topicName)
     {
         _consumer = consumer;
+        Topic = topicName;
     }
     
     public Task ConsumeAsync(Func<string, TMessage, Task> processAction, CancellationToken ct = default)

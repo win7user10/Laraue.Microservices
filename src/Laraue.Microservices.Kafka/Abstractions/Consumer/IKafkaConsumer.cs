@@ -2,7 +2,7 @@
 
 namespace Laraue.Microservices.Kafka.Abstractions.Consumer;
 
-public interface IKafkaConsumer<TMessage> : IKafkaConsumer
+public interface IKafkaConsumer<TMessage> : IBroker
     where TMessage : class
 {
     Task ConsumeAsync(
@@ -12,9 +12,4 @@ public interface IKafkaConsumer<TMessage> : IKafkaConsumer
     Task ConsumeAsync(
         Func<ConsumeResult<string, TMessage>, Task> processAction,
         CancellationToken ct = default);
-}
-
-public interface IKafkaConsumer
-{
-    string Topic { get; }
 }
