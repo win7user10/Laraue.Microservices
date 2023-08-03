@@ -13,4 +13,8 @@
       <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Laraue.Microservices.Metrics\Laraue.Microservices.Metrics.csproj" />
+    </ItemGroup>
+
 </Project>

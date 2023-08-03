@@ -16,6 +16,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laraue.Microservices.Authen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laraue.Microservices.Tests.Kafka", "tests\Laraue.Microservices.Tests.Kafka\Laraue.Microservices.Tests.Kafka.csproj", "{FDC5291F-0E49-48AD-8E65-40CF83C45ADB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{76606F5A-8821-48F4-BC83-3CBA71415A01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laraue.Microservices.Apps.KafkaProducer", "Laraue.Microservices.Apps.KafkaProducer\Laraue.Microservices.Apps.KafkaProducer.csproj", "{8607A700-E261-4436-925F-B306D85951DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laraue.Microservices.Common", "src\Laraue.Microservices.Common\Laraue.Microservices.Common.csproj", "{FBEFA4F8-A71C-4E11-B2AB-985C33BEA470}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +34,8 @@ Global
 		{55816300-2ED8-4A9E-967B-75B590C08074} = {149BFA66-9965-49E4-B80B-BD54747BA1EF}
 		{9466C84F-5A9F-4E24-BC73-1D9B9AA91AAF} = {149BFA66-9965-49E4-B80B-BD54747BA1EF}
 		{FDC5291F-0E49-48AD-8E65-40CF83C45ADB} = {4B0CE299-CC49-4203-BACE-387C67040498}
+		{8607A700-E261-4436-925F-B306D85951DF} = {76606F5A-8821-48F4-BC83-3CBA71415A01}
+		{FBEFA4F8-A71C-4E11-B2AB-985C33BEA470} = {149BFA66-9965-49E4-B80B-BD54747BA1EF}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9A270A7E-F473-4279-A260-596D4C2E0564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -54,5 +62,13 @@ Global
 		{FDC5291F-0E49-48AD-8E65-40CF83C45ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDC5291F-0E49-48AD-8E65-40CF83C45ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDC5291F-0E49-48AD-8E65-40CF83C45ADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8607A700-E261-4436-925F-B306D85951DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8607A700-E261-4436-925F-B306D85951DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8607A700-E261-4436-925F-B306D85951DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8607A700-E261-4436-925F-B306D85951DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBEFA4F8-A71C-4E11-B2AB-985C33BEA470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBEFA4F8-A71C-4E11-B2AB-985C33BEA470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBEFA4F8-A71C-4E11-B2AB-985C33BEA470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBEFA4F8-A71C-4E11-B2AB-985C33BEA470}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,18 +1,22 @@
 ﻿using Confluent.Kafka;
 using Laraue.Microservices.Kafka.Abstractions.Producer;
 using Laraue.Microservices.Kafka.Impl.Serializers;
+using Laraue.Microservices.Metrics.Abstractions;
 
 namespace Laraue.Microservices.Kafka.Impl.Producer;
 
 public sealed class KafkaProducerBuilder<TMessage> : IKafkaProducerBuilder<TMessage>
     where TMessage : class
 {
+    private readonly IMetricsFactory _metricsFactory;
     private string? _topicName;
     private ProducerConfig _producerConfig = new ();
     private Action<ProducerBuilder<string, TMessage>> _configureConfluentProducer;
 
-    public KafkaProducerBuilder()
+    public KafkaProducerBuilder(IMetricsFactory metricsFactory)
     {
+        _metricsFactory = metricsFactory;
+        
         _configureConfluentProducer = builder =>
             builder.SetKeySerializer(new JsonSerializer<string>())
                 .SetValueSerializer(new JsonSerializer<TMessage>());
@@ -30,6 +34,15 @@ public sealed class KafkaProducerBuilder<TMessage> : IKafkaProducerBuilder<TMess
         _producerConfig = producerConfig;
 
         return this;
+    }
+
+    public IKafkaProducerBuilder<TMessage> WithConfiguration(ProducerOptions producerOptions)
+    {
+        var builder = WithTopicName(producerOptions.Topic);
+
+        return producerOptions.ProducerConfig is not null
+            ? builder.WithConfiguration(producerOptions.ProducerConfig)
+            : builder;
     }
 
     public IKafkaProducerBuilder<TMessage> WithKeySerializer(ISerializer<string> serializer)
@@ -62,8 +75,8 @@ public sealed class KafkaProducerBuilder<TMessage> : IKafkaProducerBuilder<TMess
         }
 
         var producerBuilder = new ProducerBuilder<string, TMessage>(_producerConfig);
-        _configureConfluentProducer?.Invoke(producerBuilder);
+        _configureConfluentProducer.Invoke(producerBuilder);
 
-        return new KafkaProducer<TMessage>(producerBuilder.Build(), _topicName);
+        return new KafkaProducer<TMessage>(producerBuilder.Build(), _topicName, _metricsFactory);
     }
 }

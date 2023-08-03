@@ -2,6 +2,8 @@
 using Laraue.Microservices.Kafka.Abstractions.Producer;
 using Laraue.Microservices.Kafka.Impl.Consumer;
 using Laraue.Microservices.Kafka.Impl.Producer;
+using Laraue.Microservices.Metrics.Extensions;
+using Laraue.Microservices.Metrics.Impl;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -23,7 +25,7 @@ public static class ServiceCollectionExtensions
         string producerKey)
         where TMessage : class
     {
-        var kafkaProducerBuilder = new KafkaProducerBuilder<TMessage>();
+        var kafkaProducerBuilder = new KafkaProducerBuilder<TMessage>(new MetricsFactory());
         
         useProducerBuilder(kafkaProducerBuilder);
 
@@ -70,7 +72,7 @@ public static class ServiceCollectionExtensions
         string producerKey)
         where TMessage : class
     {
-        var kafkaConsumerBuilder = new KafkaConsumerBuilder<TMessage>();
+        var kafkaConsumerBuilder = new KafkaConsumerBuilder<TMessage>(new MetricsFactory());
         
         useConsumerBuilder(kafkaConsumerBuilder);
 

@@ -1,18 +1,21 @@
 ﻿using Confluent.Kafka;
 using Laraue.Microservices.Kafka.Abstractions.Consumer;
 using Laraue.Microservices.Kafka.Impl.Deserializers;
+using Laraue.Microservices.Metrics.Abstractions;
 
 namespace Laraue.Microservices.Kafka.Impl.Consumer;
 
 public sealed class KafkaConsumerBuilder<TMessage> : IKafkaConsumerBuilder<TMessage>
     where TMessage : class
 {
+    private readonly IMetricsFactory _metricsFactory;
     private string? _topicName;
     private ConsumerConfig _consumerConfig = new ();
     private Action<ConsumerBuilder<string, TMessage>> _configureConfluentConsumer;
     
-    public KafkaConsumerBuilder()
+    public KafkaConsumerBuilder(IMetricsFactory metricsFactory)
     {
+        _metricsFactory = metricsFactory;
         _configureConfluentConsumer = builder =>
             builder.SetKeyDeserializer(new JsonDeserializer<string>())
                 .SetValueDeserializer(new JsonDeserializer<TMessage>());
@@ -70,6 +73,6 @@ public sealed class KafkaConsumerBuilder<TMessage> : IKafkaConsumerBuilder<TMess
         var consumerBuilder = new ConsumerBuilder<string, TMessage>(_consumerConfig);
         _configureConfluentConsumer.Invoke(consumerBuilder);
 
-        return new KafkaConsumer<TMessage>(consumerBuilder.Build(), _topicName);
+        return new KafkaConsumer<TMessage>(consumerBuilder.Build(), _topicName, _metricsFactory);
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Confluent.Kafka;
 using Laraue.Microservices.Kafka.Abstractions.Producer;
+using Laraue.Microservices.Metrics;
+using Laraue.Microservices.Metrics.Abstractions;
 
 namespace Laraue.Microservices.Kafka.Impl.Producer;
 
@@ -7,20 +9,26 @@ public sealed class KafkaProducer<TMessage> : IKafkaProducer<TMessage>
     where TMessage : class
 {
     private readonly IProducer<string, TMessage> _producer;
+    private readonly ICounterMetric _counter;
 
     public KafkaProducer(
         IProducer<string, TMessage> producer,
-        string topicName)
+        string topicName,
+        IMetricsFactory metricsFactory)
     {
-        _producer = producer;
         Topic = topicName;
+        
+        _producer = producer;
+        _counter = metricsFactory.GetCounter(
+            $"kafka_producer_{Topic.Replace('-', '_')}",
+            "Amount of the messages published by the current producer");
     }
 
     public string Topic { get; }
 
-    public Task ProduceAsync(string key, TMessage message, Headers headers, CancellationToken ct = default)
+    public async Task ProduceAsync(string key, TMessage message, Headers headers, CancellationToken ct = default)
     {
-        return _producer.ProduceAsync(
+        await _producer.ProduceAsync(
             Topic,
             new Message<string, TMessage>
             {
@@ -30,6 +38,8 @@ public sealed class KafkaProducer<TMessage> : IKafkaProducer<TMessage>
                 Headers = headers,
             },
             ct);
+        
+        _counter.Increment();
     }
 
     public Task ProduceAsync(string key, TMessage message, CancellationToken ct = default)
