@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Diagnostics;
+using System.Text.Json;
 using Laraue.Microservices.Apps.KafkaProducer;
 using Laraue.Microservices.Kafka.Abstractions.Consumer;
 using Laraue.Microservices.Kafka.Impl.Consumer;
@@ -17,7 +18,9 @@ public class Consumer : KafkaConsumerWorker<TestMessage>
 
     protected override Task ProcessAsync(string key, TestMessage message)
     {
-        _logger.LogInformation("{key}: {message} has been processed", key, JsonSerializer.Serialize(message));
+        var activityId = Activity.Current?.TraceId.ToString();
+        
+        _logger.LogInformation("Activity: {activity} {key}: {message} has been processed", activityId, key, JsonSerializer.Serialize(message));
 
         return Task.CompletedTask;
     }

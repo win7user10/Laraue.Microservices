@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Text;
 using Confluent.Kafka;
 using Laraue.Microservices.Kafka.Abstractions.Producer;
 using Laraue.Microservices.Metrics;
@@ -48,14 +49,10 @@ public sealed class KafkaProducer<TMessage> : IKafkaProducer<TMessage>
     private Activity AddActivityHeaders(Headers headers)
     {
         var activity = Activity.Current ?? new Activity($"Kafka.Producer.{Topic}");
+        activity.Start();
 
-        var activityTraceId = new Span<byte>();
-        activity.TraceId.CopyTo(activityTraceId);
-        headers.Add(Constants.ActivityTraceIdHeader, activityTraceId.ToArray());
-        
-        var activitySpanId = new Span<byte>();
-        activity.SpanId.CopyTo(activitySpanId);
-        headers.Add(Constants.ActivitySpanIdHeader, activitySpanId.ToArray());
+        headers.Add(Constants.ActivityTraceIdHeader, Encoding.UTF8.GetBytes(activity.TraceId.ToString()));
+        headers.Add(Constants.ActivitySpanIdHeader, Encoding.UTF8.GetBytes(activity.SpanId.ToString()));
 
         return activity;
     }
