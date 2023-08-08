@@ -15,6 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Laraue.Microservices.Metrics\Laraue.Microservices.Metrics.csproj" />
+      <ProjectReference Include="..\Laraue.Microservices.OpenTelemetry\Laraue.Microservices.OpenTelemetry.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,5 +1,4 @@
 ﻿using Confluent.Kafka;
-using Microsoft.Extensions.Configuration;
 
 namespace Laraue.Microservices.Kafka.Abstractions.Producer;
 

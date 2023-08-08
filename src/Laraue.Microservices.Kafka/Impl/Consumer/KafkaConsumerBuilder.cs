@@ -41,6 +41,15 @@ public sealed class KafkaConsumerBuilder<TMessage> : IKafkaConsumerBuilder<TMess
 
         return this;
     }
+    
+    public IKafkaConsumerBuilder<TMessage> WithConfiguration(ConsumerOptions consumerOptions)
+    {
+        var builder = WithTopicName(consumerOptions.Topic);
+
+        return consumerOptions.ConsumerConfig is not null
+            ? builder.WithConfiguration(consumerOptions.ConsumerConfig)
+            : builder;
+    }
 
     public IKafkaConsumerBuilder<TMessage> WithKeyDeserializer(IDeserializer<string> deserializer)
     {

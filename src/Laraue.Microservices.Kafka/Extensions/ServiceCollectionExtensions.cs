@@ -2,7 +2,6 @@
 using Laraue.Microservices.Kafka.Abstractions.Producer;
 using Laraue.Microservices.Kafka.Impl.Consumer;
 using Laraue.Microservices.Kafka.Impl.Producer;
-using Laraue.Microservices.Metrics.Extensions;
 using Laraue.Microservices.Metrics.Impl;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;

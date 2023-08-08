@@ -9,6 +9,8 @@ public interface IKafkaConsumerBuilder<TMessage> where TMessage : class
     IKafkaConsumerBuilder<TMessage> WithGroupId(string groupId);
     
     IKafkaConsumerBuilder<TMessage> WithConfiguration(ConsumerConfig consumerConfig);
+
+    IKafkaConsumerBuilder<TMessage> WithConfiguration(ConsumerOptions consumerOptions);
     
     IKafkaConsumerBuilder<TMessage> WithKeyDeserializer(IDeserializer<string> deserializer);
     

@@ -1,4 +1,5 @@
-﻿using Confluent.Kafka;
+﻿using System.Diagnostics;
+using Confluent.Kafka;
 using Laraue.Microservices.Kafka.Abstractions.Producer;
 using Laraue.Microservices.Metrics;
 using Laraue.Microservices.Metrics.Abstractions;
@@ -28,6 +29,8 @@ public sealed class KafkaProducer<TMessage> : IKafkaProducer<TMessage>
 
     public async Task ProduceAsync(string key, TMessage message, Headers headers, CancellationToken ct = default)
     {
+        using var activity = AddActivityHeaders(headers);
+        
         await _producer.ProduceAsync(
             Topic,
             new Message<string, TMessage>
@@ -40,6 +43,21 @@ public sealed class KafkaProducer<TMessage> : IKafkaProducer<TMessage>
             ct);
         
         _counter.Increment();
+    }
+    
+    private Activity AddActivityHeaders(Headers headers)
+    {
+        var activity = Activity.Current ?? new Activity($"Kafka.Producer.{Topic}");
+
+        var activityTraceId = new Span<byte>();
+        activity.TraceId.CopyTo(activityTraceId);
+        headers.Add(Constants.ActivityTraceIdHeader, activityTraceId.ToArray());
+        
+        var activitySpanId = new Span<byte>();
+        activity.SpanId.CopyTo(activitySpanId);
+        headers.Add(Constants.ActivitySpanIdHeader, activitySpanId.ToArray());
+
+        return activity;
     }
 
     public Task ProduceAsync(string key, TMessage message, CancellationToken ct = default)
